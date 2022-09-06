@@ -1,10 +1,11 @@
-require 'uri'
+require "open-uri"
 
 def random_weekdays
   size = rand(1..Location::WEEKDAYS.size)
   Location::WEEKDAYS.sample(size)
 end
 
+puts "Cleaning the database"
 Locationextra.destroy_all
 Extra.destroy_all
 Chat.destroy_all
@@ -15,6 +16,7 @@ Category.destroy_all
 User.destroy_all
 Booking.destroy_all
 
+puts "Creating Extras"
 # Extras
 natural_light = Extra.create(name: 'Natural Light', icon: '<i class="fas fa-sun"></i>')
 soun_poof = Extra.create(name: 'Sound Proof', icon: '<i class="fas fa-microphone-alt-slash"></i>')
@@ -26,6 +28,7 @@ action = Extra.create(name: 'Apt For Action Scenes', icon: '<i class="fas fa-exc
 Extra.create(name: 'Loud Filming Noise Allowed', icon: '<i class="fas fa-volume-up"></i>')
 Extra.create(name: 'Location Remodel Alowed', icon: '<i class="fas fa-chair"></i>')
 
+puts "Creating Categories"
 # categories
 kitchen = Category.create!(name: "kitchen")
 house = Category.create!(name: "house")
@@ -36,6 +39,7 @@ living_room = Category.create!(name: "living Room")
 basement = Category.create!(name: "basement")
 restaurant = Category.create!(name: "restaurant")
 
+puts "Creating Users"
 # users
 
 foto_6 = URI.open("https://es.web.img2.acsta.net/c_215_290/medias/nmedia/18/35/38/61/19636935.jpg")
@@ -46,7 +50,7 @@ foto_10 = URI.open("https://static.techspot.com/images2/news/bigimage/2019/03/20
 david = User.create!(username: "Master Chief", email: 'david@gmail.com', password: '123456')
 david.photo.attach(io: foto_10, filename: 'nes.jpg', content_type: 'image/jpg')
 
-foto_11 = URI.open("https://caloosabelle.com/wp-content/uploads/2019/11/cb-11-28-vet.jpg")
+foto_11 = URI.open("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FUKeI9bdB6Qg%2Fmaxresdefault.jpg&f=1&nofb=1")
 bea = User.create!(username: "Liutenant Commander", email: 'bea@gmail.com', password: '123456')
 bea.photo.attach(io: foto_11, filename: 'nes.jpg', content_type: 'image/jpg')
 
@@ -78,16 +82,12 @@ foto_4 = URI.open("https://i.pinimg.com/originals/b5/87/3e/b5873e4acafc5ebc7d504
 fernando = User.create!(username: "Fernando", email: "fernando@gmail.com", password: "123456")
 fernando.photo.attach(io: foto_4, filename: 'nes.jpg', content_type: 'image/jpg')
 
-
-
-
-
-
+puts "Creating Kitchens"
 #  KITCHEN
 
 kitchen1 = URI.open('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/small-kitchen-ideas-1568926700.jpg')
 kitchen12 = URI.open('https://images.squarespace-cdn.com/content/v1/53744d2fe4b0a52017d9e3d4/1519151758850-7XA17JNG3OJAQC7L8QX3/ke17ZwdGBToddI8pDm48kA_8C4tqIjqFH1gGUZjwmpMUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2LqlgEJFpcKGkH1QJCiaDbt_fVRu2PiXUCFCMnUnJ0IihHAH51QaxKq4KdVMVBxpG/4-1.jpg')
-kitchen13 = URI.open('https://naturerenewcleanses.net/wp-content/uploads/2019/09/26-Long-Narrow-Kitchen-Design-Ideas-Layout-Suggestions_00022.jpg')
+kitchen13 = URI.open('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.architectureartdesigns.com%2Fwp-content%2Fuploads%2F2016%2F07%2F16-Charming-Mediterranean-Kitchen-Designs-That-Will-Mesmerize-You-9.jpg&f=1&nofb=1')
 kitchen14 = URI.open('https://i.pinimg.com/originals/ae/8e/64/ae8e64d2e705520d4e45c55162af8196.jpg')
 kitchen15 = URI.open('https://i.pinimg.com/736x/81/9e/7c/819e7c82d1db8cab458d91dbb641a437--cosy-kitchen-kitchen-redo.jpg')
 location_1 = Location.create!(available_weekdays: random_weekdays, name: "Small kitchen", price: 55, description: "Small kitchen but with great light and perfect for romantics scens to make it more lovely", category: kitchen, user: User.last, address: "Plaza palmeras 6", capacity: 5, space: 10, plugs: 4)
@@ -143,7 +143,7 @@ kitchen_11 = Location.create!(available_weekdays: random_weekdays, name: "Old ki
 kitchen_11.photos.attach(io: kitchen11, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_34 = URI.open("https://www.ikea.com/images/c3/90/c3901feba0b6de2494001ee424d2ac4d.jpg")
-file_341 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+file_341 = URI.open("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmir-s3-cdn-cf.behance.net%2Fproject_modules%2F2800_opt_1%2F365e5d96648037.5eb3048d9e928.jpg&f=1&nofb=1")
 file_342 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
 location_34 = Location.create!(available_weekdays: random_weekdays,name: "Green Kitchen", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: kitchen, user: natalie, address: "Calle Embajadores")
 location_34.photos.attach(io: file_34, filename: 'nes.jpg', content_type: 'image/jpg')
@@ -155,7 +155,7 @@ location_11 = Location.create!(available_weekdays: random_weekdays,name: "Wooden
 location_11.photos.attach(io: file_11, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_17 = URI.open("https://cdn.onebauer.media/one/media/5d6e/859e/16ef/e650/2932/4b38/RAcC2dkGxtkWr-JKNlc4grHhDsdvvwcsJegaU9bOW9Q.jpg")
-file_171 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+file_171 = URI.open("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.1xC00yxuBczetFP99AecugHaE8%26pid%3DApi&f=1")
 file_172 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
 location_17 = Location.create!(available_weekdays: random_weekdays,name: "Star Wars Kitchen", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: kitchen, user: natalie, address: "Calle Embajadores")
 location_17.photos.attach(io: file_17, filename: 'nes.jpg', content_type: 'image/jpg')
@@ -163,7 +163,7 @@ location_17.photos.attach(io: file_171, filename: 'nes.jpeg', content_type: 'ima
 location_17.photos.attach(io: file_172, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_26 = URI.open("https://img.edilportale.com/product-thumbs/b_gran-duca-zelda-prestige-340966-relc50327a4.jpg")
-file_261 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+file_261 = URI.open("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.xG4miG9qWTLHC3E_bQTtVgHaEI%26pid%3DApi&f=1")
 file_262 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
 location_26 = Location.create!(available_weekdays: random_weekdays,name: "Zelda Kitchen", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: kitchen, user: natalie, address: "Calle Embajadores")
 location_26.photos.attach(io: file_26, filename: 'nes.jpg', content_type: 'image/jpg')
@@ -173,9 +173,8 @@ location_26.photos.attach(io: file_262, filename: 'nes.jpg', content_type: 'imag
 
 
 
-
+puts "Creating Basements"
 # BASEMENT
-
 basement1 = URI.open("https://live.staticflickr.com/4059/4670451769_8b29a31a9a_b.jpg")
 location_4 = Location.create!(available_weekdays: random_weekdays,name: "Dark basement", price: 10, description: "Dark and moist, great to spy on the neighbours.", category: basement, user: pepe, address: "Plaza palmeras 6")
 location_4.photos.attach(io: basement1, filename: 'nes.jpeg', content_type: 'image/jpeg')
@@ -188,9 +187,9 @@ basement3 = URI.open("https://mk0aeont9p0lw6yryd.kinstacdn.com/wp-content/upload
 location_4 = Location.create!(available_weekdays: random_weekdays,name: "Cthulhu basement", price: 250, description: "Dark and moist, great to spy on the neighbours.", category: basement, user: pepe, address: "Plaza palmeras 6")
 location_4.photos.attach(io: basement3, filename: 'nes.jpg', content_type: 'image/jpg')
 
-basement4 = URI.open("https://thenypost.files.wordpress.com/2020/01/star-wars-basement-06.jpg")
-location_4 = Location.create!(available_weekdays: random_weekdays,name: "Star Wars basement", price: 205, description: "Dark and moist, great to spy on the neighbours.", category: basement, user: pepe, address: "Plaza palmeras 6")
-location_4.photos.attach(io: basement4, filename: 'nes.jpg', content_type: 'image/jpg')
+# basement4 = URI.open("https://thenypost.files.wordpress.com/2020/01/star-wars-basement-06.jpg")
+# location_4 = Location.create!(available_weekdays: random_weekdays,name: "Star Wars basement", price: 205, description: "Dark and moist, great to spy on the neighbours.", category: basement, user: pepe, address: "Plaza palmeras 6")
+# location_4.photos.attach(io: basement4, filename: 'nes.jpg', content_type: 'image/jpg')
 
 basement5 = URI.open("https://pbs.twimg.com/media/C4ZP8lMWAAEtpP3.jpg")
 location_4 = Location.create!(available_weekdays: random_weekdays,name: "Trump's basement", price: 5, description: "Dark and moist, great to spy on the neighbours.", category: basement, user: pepe, address: "Plaza palmeras 6")
@@ -216,24 +215,23 @@ basement10 = URI.open("https://images.fineartamerica.com/images/artworkimages/me
 location_8 = Location.create!(available_weekdays: random_weekdays,name: "Creepy basement", price: 9, description: "I'll be back... with more of this ones because they are a-ma-zing!", category: basement, user: terminator, address: "Calle Embajadores 120")
 location_8.photos.attach(io: basement10, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_20 = URI.open("https://s3.eestatic.com/2017/12/01/reportajes/Reportajes_266237045_56098839_1024x576.jpg")
-file_201 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_202 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_20 = Location.create!(available_weekdays: random_weekdays,name: "Yakuza Basement", price: 915, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: basement, user: natalie, address: "Calle Embajadores")
-location_20.photos.attach(io: file_20, filename: 'nes.jpg', content_type: 'image/jpg')
-location_20.photos.attach(io: file_201, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_20.photos.attach(io: file_202, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_20 = URI.open("https://s3.eestatic.com/2017/12/01/reportajes/Reportajes_266237045_56098839_1024x576.jpg")
+# file_201 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_202 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_20 = Location.create!(available_weekdays: random_weekdays,name: "Yakuza Basement", price: 915, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: basement, user: natalie, address: "Calle Embajadores")
+# location_20.photos.attach(io: file_20, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_20.photos.attach(io: file_201, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_20.photos.attach(io: file_202, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_29 = URI.open("https://live.staticflickr.com/4077/4750112408_efae470c89_b.jpg")
-file_291 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_292 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_29 = Location.create!(available_weekdays: random_weekdays,name: "Medieval Basement", price: 35, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: basement, user: natalie, address: "Calle Embajadores")
-location_29.photos.attach(io: file_29, filename: 'nes.jpg', content_type: 'image/jpg')
-location_29.photos.attach(io: file_291, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_29.photos.attach(io: file_292, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_29 = URI.open("https://live.staticflickr.com/4077/4750112408_efae470c89_b.jpg")
+# file_291 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_292 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_29 = Location.create!(available_weekdays: random_weekdays,name: "Medieval Basement", price: 35, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: basement, user: natalie, address: "Calle Embajadores")
+# location_29.photos.attach(io: file_29, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_29.photos.attach(io: file_291, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_29.photos.attach(io: file_292, filename: 'nes.jpg', content_type: 'image/jpg')
 
-
-
+puts "Creating Apartments"
 # APARTMENT
 
 apartment1 = URI.open("https://cdn.vox-cdn.com/thumbor/LJme-9qPPeF3SOqHh8z97mPoRbs=/0x0:1200x800/1200x800/filters:focal(504x304:696x496)/cdn.vox-cdn.com/uploads/chorus_image/image/58373545/286129160.0.jpg")
@@ -256,17 +254,17 @@ apartment5 = URI.open("https://q-cf.bstatic.com/images/hotel/max1024x768/221/221
 location_5 = Location.create!(available_weekdays: random_weekdays,name: "Great Apartment", price: 93, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
 location_5.photos.attach(io: apartment5, filename: 'nes.jpg', content_type: 'image/jpg')
 
-apartment6 = URI.open("https://i.ytimg.com/vi/AFOGRYhgKi4/maxresdefault.jpg")
-location_5 = Location.create!(available_weekdays: random_weekdays,name: "Pumkin Apartment", price: 90, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
-location_5.photos.attach(io: apartment6, filename: 'nes.jpg', content_type: 'image/jpg')
+# apartment6 = URI.open("https://i.ytimg.com/vi/AFOGRYhgKi4/maxresdefault.jpg")
+# location_5 = Location.create!(available_weekdays: random_weekdays,name: "Pumkin Apartment", price: 90, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
+# location_5.photos.attach(io: apartment6, filename: 'nes.jpg', content_type: 'image/jpg')
 
 apartment7 = URI.open("https://i.pinimg.com/originals/db/91/27/db91277c174e08ada198a24185a6c062.jpg")
 location_5 = Location.create!(available_weekdays: random_weekdays,name: "Luxury Apartment", price: 2300, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
 location_5.photos.attach(io: apartment7, filename: 'nes.jpg', content_type: 'image/jpg')
 
-apartment8 = URI.open("https://i.ytimg.com/vi/GoH4-Q39rxs/maxresdefault.jpg")
-location_5 = Location.create!(available_weekdays: random_weekdays,name: "Real Apartment", price: 33, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
-location_5.photos.attach(io: apartment8, filename: 'nes.jpg', content_type: 'image/jpg')
+# apartment8 = URI.open("https://i.ytimg.com/vi/GoH4-Q39rxs/maxresdefault.jpg")
+# location_5 = Location.create!(available_weekdays: random_weekdays,name: "Real Apartment", price: 33, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
+# location_5.photos.attach(io: apartment8, filename: 'nes.jpg', content_type: 'image/jpg')
 
 # apartment9 = URI.open("https://images1.apartments.com/i2/fmiQBCX7JbxRIsRaUi8N6aVtwA515WxEyBQlDfQ1apc/117/place-one-apartment-homes-plymouth-meeting-pa-1hab-15ba---990-ft.jpg")
 # location_5 = Location.create!(available_weekdays: random_weekdays,name: "One Aparment", price: 1, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
@@ -276,32 +274,27 @@ location_5.photos.attach(io: apartment8, filename: 'nes.jpg', content_type: 'ima
 # location_5 = Location.create!(available_weekdays: random_weekdays,name: "Two Aparment", price: 2, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
 # location_5.photos.attach(io: apartment10, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_15 = URI.open("https://ws.icnea.net/img2/E1568/imgs/E1045F0x350.jpg")
-file_151 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_152 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_15 = Location.create!(available_weekdays: random_weekdays,name: "Lollipop Flats", price: 95, description: "Belle Époque never died in MADRID CITY CENTRE, full of majestic cultural life. That flat where you can dream as if you were in a movie, but rather your real holidays.", category: apartment, user: natalie, address: "Calle Embajadores")
-location_15.photos.attach(io: file_15, filename: 'nes.jpg', content_type: 'image/jpg')
-location_15.photos.attach(io: file_151, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_15.photos.attach(io: file_152, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_15 = URI.open("https://ws.icnea.net/img2/E1568/imgs/E1045F0x350.jpg")
+# file_151 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_152 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_15 = Location.create!(available_weekdays: random_weekdays,name: "Lollipop Flats", price: 95, description: "Belle Époque never died in MADRID CITY CENTRE, full of majestic cultural life. That flat where you can dream as if you were in a movie, but rather your real holidays.", category: apartment, user: natalie, address: "Calle Embajadores")
+# location_15.photos.attach(io: file_15, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_15.photos.attach(io: file_151, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_15.photos.attach(io: file_152, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_16 = URI.open("https://ws.icnea.net/img2/E1568/imgs/E1045F0x350.jpg")
-file_161 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_162 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_16 = Location.create!(available_weekdays: random_weekdays,name: "Apartment in ", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: apartment, user: natalie, address: "Calle Embajadores")
-location_16.photos.attach(io: file_16, filename: 'nes.jpg', content_type: 'image/jpg')
-location_16.photos.attach(io: file_161, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_16.photos.attach(io: file_162, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_16 = URI.open("https://ws.icnea.net/img2/E1568/imgs/E1045F0x350.jpg")
+# file_161 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_162 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_16 = Location.create!(available_weekdays: random_weekdays,name: "Apartment in ", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: apartment, user: natalie, address: "Calle Embajadores")
+# location_16.photos.attach(io: file_16, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_16.photos.attach(io: file_161, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_16.photos.attach(io: file_162, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_13 = URI.open("https://s.hdnux.com/photos/01/10/01/13/18879198/3/gallery_medium.jpg")
 location_13 = Location.create!(available_weekdays: random_weekdays,name: "Mansion", price: 700, description: "This mansion is perfect for your film, you can use all the rooms you need, it has 3 living rooms, 2 kitchens, 5 toilets and 10 rooms. Is available all days and we don't live there, so make sure you book in advance to save your space! ", category: apartment, user: natalie, address: "Calle Embajadores")
 location_13.photos.attach(io: file_13, filename: 'nes.jpg', content_type: 'image/jpg')
 
-
-
-
-
-
-
+puts "Creating Pubs"
 #  PUB
 
 pub1 = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/10/6a/cd/f3/murphys-irish-pub-checkpoint.jpg")
@@ -312,9 +305,9 @@ pub2 = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/07/bc/df/be/res
 location_3 = Location.create!(available_weekdays: random_weekdays,name: "Bar Andaluz", price: 25, description: "Great stuff, trust me.", category: pub, user: pepe, address: "Plaza palmeras 6")
 location_3.photos.attach(io: pub2, filename: 'nes.jpg', content_type: 'image/jpg')
 
-pub3 = URI.open("https://i2.wp.com/canariasvipcard.com/es/wp-content/uploads/sites/2/2018/12/Wartseiner-Eck-3.jpg")
-location_3 = Location.create!(available_weekdays: random_weekdays,name: "WARSTEINER ECK", price: 25, description: "Great stuff, trust me.", category: pub, user: pepe, address: "Plaza palmeras 6")
-location_3.photos.attach(io: pub3, filename: 'nes.jpg', content_type: 'image/jpg')
+# pub3 = URI.open("https://i2.wp.com/canariasvipcard.com/es/wp-content/uploads/sites/2/2018/12/Wartseiner-Eck-3.jpg")
+# location_3 = Location.create!(available_weekdays: random_weekdays,name: "WARSTEINER ECK", price: 25, description: "Great stuff, trust me.", category: pub, user: pepe, address: "Plaza palmeras 6")
+# location_3.photos.attach(io: pub3, filename: 'nes.jpg', content_type: 'image/jpg')
 
 pub4 = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/12/aa/ec/d7/oishii-ramen-street.jpg")
 location_3 = Location.create!(available_weekdays: random_weekdays,name: "Oshii Ramen", price: 25, description: "Great stuff, trust me.", category: pub, user: pepe, address: "Plaza palmeras 6")
@@ -348,107 +341,104 @@ file_6 = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/05/a3/15/8f/l
 location_6 = Location.create!(available_weekdays: random_weekdays,name: "Spanish tapas bar", price: 5, description: "It's broken, but it's cheap.", category: pub, user: jason, address: "Calle Embajadores 100")
 location_6.photos.attach(io: file_6, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_23 = URI.open("https://ua.igotoworld.com/frontend/webcontent/websites/1/images/gallery/2215810_800x600_20155605_152921845259919_3510513436224586809_n.jpg")
-file_231 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_232 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_23 = Location.create!(available_weekdays: random_weekdays,name: "Mafia Pub", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: pub, user: natalie, address: "Calle Embajadores")
-location_23.photos.attach(io: file_23, filename: 'nes.jpg', content_type: 'image/jpg')
-location_23.photos.attach(io: file_231, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_23.photos.attach(io: file_232, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_23 = URI.open("https://ua.igotoworld.com/frontend/webcontent/websites/1/images/gallery/2215810_800x600_20155605_152921845259919_3510513436224586809_n.jpg")
+# file_231 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_232 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_23 = Location.create!(available_weekdays: random_weekdays,name: "Mafia Pub", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: pub, user: natalie, address: "Calle Embajadores")
+# location_23.photos.attach(io: file_23, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_23.photos.attach(io: file_231, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_23.photos.attach(io: file_232, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_31 = URI.open("https://i.pinimg.com/originals/2a/e7/19/2ae7196b59b8a73e2fccd97e2e053d00.jpg")
-file_311 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_312 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_31 = Location.create!(available_weekdays: random_weekdays,name: "Chinese Pub", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: pub, user: natalie, address: "Calle Embajadores")
-location_31.photos.attach(io: file_31, filename: 'nes.jpg', content_type: 'image/jpg')
-location_31.photos.attach(io: file_311, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_31.photos.attach(io: file_312, filename: 'nes.jpg', content_type: 'image/jpg')
-
-
+# file_31 = URI.open("https://i.pinimg.com/originals/2a/e7/19/2ae7196b59b8a73e2fccd97e2e053d00.jpg")
+# file_311 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_312 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_31 = Location.create!(available_weekdays: random_weekdays,name: "Chinese Pub", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: pub, user: natalie, address: "Calle Embajadores")
+# location_31.photos.attach(io: file_31, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_31.photos.attach(io: file_311, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_31.photos.attach(io: file_312, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
+puts "Creating Livingrooms"
 # LIVINGROOM
 
-file_7 = URI.open("https://saltandblues.com/wp-content/uploads/2019/07/living-room-warm-interior-paint-colors-for-2015-warm-paint-colors-for-living-room-rooms-family-net.jpg")
-location_7 = Location.create!(available_weekdays: random_weekdays,name: "Warm living room", price: 5, description: "Went to the past and stole this from a hipster, it kinda sucks.", category: living_room, user: terminator, address: "Calle Embajadores 110")
-location_7.photos.attach(io: file_7, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_7 = URI.open("https://saltandblues.com/wp-content/uploads/2019/07/living-room-warm-interior-paint-colors-for-2015-warm-paint-colors-for-living-room-rooms-family-net.jpg")
+# location_7 = Location.create!(available_weekdays: random_weekdays,name: "Warm living room", price: 5, description: "Went to the past and stole this from a hipster, it kinda sucks.", category: living_room, user: terminator, address: "Calle Embajadores 110")
+# location_7.photos.attach(io: file_7, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_21 = URI.open("https://miro.medium.com/max/993/1*AFQSKgdQ7tjok_LN9pDV5g.png")
-file_211 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_212 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_21 = Location.create!(available_weekdays: random_weekdays,name: "Artemis Living Room", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: living_room, user: natalie, address: "Calle Embajadores")
-location_21.photos.attach(io: file_21, filename: 'nes.png', content_type: 'image/png')
-location_21.photos.attach(io: file_211, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_21.photos.attach(io: file_212, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_21 = URI.open("https://miro.medium.com/max/993/1*AFQSKgdQ7tjok_LN9pDV5g.png")
+# file_211 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_212 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_21 = Location.create!(available_weekdays: random_weekdays,name: "Artemis Living Room", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: living_room, user: natalie, address: "Calle Embajadores")
+# location_21.photos.attach(io: file_21, filename: 'nes.png', content_type: 'image/png')
+# location_21.photos.attach(io: file_211, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_21.photos.attach(io: file_212, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_30 = URI.open("https://content.r9cdn.net/rimg/himg/01/9f/e4/arbisoftimages-840751-MOVIE-3-image.jpg")
-file_301 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_302 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_30 = Location.create!(available_weekdays: random_weekdays,name: "Berry Glee", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: living_room, user: natalie, address: "Calle Embajadores")
-location_30.photos.attach(io: file_30, filename: 'nes.jpg', content_type: 'image/jpg')
-location_30.photos.attach(io: file_301, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_30.photos.attach(io: file_302, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_30 = URI.open("https://content.r9cdn.net/rimg/himg/01/9f/e4/arbisoftimages-840751-MOVIE-3-image.jpg")
+# file_301 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_302 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_30 = Location.create!(available_weekdays: random_weekdays,name: "Berry Glee", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: living_room, user: natalie, address: "Calle Embajadores")
+# location_30.photos.attach(io: file_30, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_30.photos.attach(io: file_301, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_30.photos.attach(io: file_302, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
-
+puts "Creating Restaurants"
 # RESTAURANT
 
 file_9 = URI.open("https://www.loscabosguide.com/wp-content/uploads/2018/09/BarEsquina-BahiahotelLOSCABOS11.jpg")
 location_9 = Location.create!(available_weekdays: random_weekdays,name: "Family restaurant", price: 19, description: "It's new, my granma gave me this for christmas but I don't like photography.", category: restaurant, user: fernando, address: "Calle Embajadores")
 location_9.photos.attach(io: file_9, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_18 = URI.open("https://assets.londonist.com/uploads/2016/07/i875/sarastro_restaurant__.jpg")
-file_181 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_182 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_18 = Location.create!(available_weekdays: random_weekdays,name: "Opera Restauran", price: 9005, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: restaurant, user: natalie, address: "Calle Embajadores")
-location_18.photos.attach(io: file_18, filename: 'nes.jpg', content_type: 'image/jpg')
-location_18.photos.attach(io: file_181, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_18.photos.attach(io: file_182, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_18 = URI.open("https://assets.londonist.com/uploads/2016/07/i875/sarastro_restaurant__.jpg")
+# file_181 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_182 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_18 = Location.create!(available_weekdays: random_weekdays,name: "Opera Restauran", price: 9005, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: restaurant, user: natalie, address: "Calle Embajadores")
+# location_18.photos.attach(io: file_18, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_18.photos.attach(io: file_181, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_18.photos.attach(io: file_182, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_27 = URI.open("https://www.visitsingapore.com/editorials/themed-restaurants-fun-dining/_jcr_content/par/mobile_21_content_sl/sliderccpar1/editorial_generic_co.thumbnail.overview-image.730.411.jpg")
-file_271 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_272 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_27 = Location.create!(available_weekdays: random_weekdays,name: "Wheel Restaurant", price: 10, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: restaurant, user: natalie, address: "Calle Embajadores")
-location_27.photos.attach(io: file_27, filename: 'nes.jpg', content_type: 'image/jpg')
-location_27.photos.attach(io: file_271, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_27.photos.attach(io: file_272, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_27 = URI.open("https://www.visitsingapore.com/editorials/themed-restaurants-fun-dining/_jcr_content/par/mobile_21_content_sl/sliderccpar1/editorial_generic_co.thumbnail.overview-image.730.411.jpg")
+# file_271 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_272 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_27 = Location.create!(available_weekdays: random_weekdays,name: "Wheel Restaurant", price: 10, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: restaurant, user: natalie, address: "Calle Embajadores")
+# location_27.photos.attach(io: file_27, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_27.photos.attach(io: file_271, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_27.photos.attach(io: file_272, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
-
+puts "Creating Gardens"
 # Garden
 
 file_10 = URI.open("https://q-cf.bstatic.com/images/hotel/max1024x768/184/184927791.jpg")
 location_10 = Location.create!(available_weekdays: random_weekdays,name: "Green garden", price: 30, description: "I use it all the time! great image and everything works!.", category: garden, user: charlotte, address: "Calle Juan de Mariana")
 location_10.photos.attach(io: file_10, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_22 = URI.open("https://akshardham.com/newdelhi/wp-content/uploads/2015/05/akshardham_Yogi_Riday_Kamal-2014-003.jpg")
-file_221 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_222 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_22 = Location.create!(available_weekdays: random_weekdays,name: "Long Way Garden", price: 950, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: garden, user: natalie, address: "Calle Embajadores")
-location_22.photos.attach(io: file_22, filename: 'nes.jpg', content_type: 'image/jpg')
-location_22.photos.attach(io: file_221, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_22.photos.attach(io: file_222, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_22 = URI.open("https://akshardham.com/newdelhi/wp-content/uploads/2015/05/akshardham_Yogi_Riday_Kamal-2014-003.jpg")
+# file_221 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_222 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_22 = Location.create!(available_weekdays: random_weekdays,name: "Long Way Garden", price: 950, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: garden, user: natalie, address: "Calle Embajadores")
+# location_22.photos.attach(io: file_22, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_22.photos.attach(io: file_221, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_22.photos.attach(io: file_222, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_31 = URI.open("https://www.nhm.uio.no/english/visiting/botanical-garden/thematic-gardens/aromatic-garden/images/ragna-bruland_dscf3268~2~02.jpg")
-file_311 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_312 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_31 = Location.create!(available_weekdays: random_weekdays,name: "The Aromatic Garden", price: 55, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: garden, user: natalie, address: "Calle Embajadores")
-location_31.photos.attach(io: file_31, filename: 'nes.jpg', content_type: 'image/jpg')
-location_31.photos.attach(io: file_311, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_31.photos.attach(io: file_312, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_31 = URI.open("https://www.nhm.uio.no/english/visiting/botanical-garden/thematic-gardens/aromatic-garden/images/ragna-bruland_dscf3268~2~02.jpg")
+# file_311 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_312 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_31 = Location.create!(available_weekdays: random_weekdays,name: "The Aromatic Garden", price: 55, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: garden, user: natalie, address: "Calle Embajadores")
+# location_31.photos.attach(io: file_31, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_31.photos.attach(io: file_311, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_31.photos.attach(io: file_312, filename: 'nes.jpg', content_type: 'image/jpg')
 
-
-
-
+puts "Creating Houses"
 # HOUSE
 
-file_25 = URI.open("https://ws.icnea.net/img2/E1568/imgs/E1045F0x350.jpg")
-file_251 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_252 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_25 = Location.create!(available_weekdays: random_weekdays,name: "Nice apartment", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: house, user: natalie, address: "Calle Embajadores")
-location_25.photos.attach(io: file_25, filename: 'nes.jpg', content_type: 'image/jpg')
-location_25.photos.attach(io: file_251, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_25.photos.attach(io: file_252, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_25 = URI.open("https://ws.icnea.net/img2/E1568/imgs/E1045F0x350.jpg")
+# file_251 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+# file_252 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_25 = Location.create!(available_weekdays: random_weekdays,name: "Nice apartment", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: house, user: natalie, address: "Calle Embajadores")
+# location_25.photos.attach(io: file_25, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_25.photos.attach(io: file_251, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_25.photos.attach(io: file_252, filename: 'nes.jpg', content_type: 'image/jpg')
 
 # file_33 = URI.open("https://i1.wp.com/apartamentosenvillajoyosa.com/wp-content/uploads/2019/05/seaema-thematic-old-beach-houses-casitas-de-ba%C3%B1o-salon-terraza.jpg")
 # file_331 = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/12/a5/87/32/pirates-house-savannah.jpg")
@@ -469,7 +459,7 @@ location_25.photos.attach(io: file_252, filename: 'nes.jpg', content_type: 'imag
 # location_33.photos.attach(io: file_334, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_24 = URI.open("https://images.adsttc.com/media/images/5c62/de78/284d/d19e/3500/00d5/newsletter/AMS-br-03-pers_B01.jpg")
-file_241 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+file_241 = URI.open("https://images.adsttc.com/media/images/5c62/de78/284d/d19e/3500/00d5/newsletter/AMS-br-03-pers_B01.jpg")
 file_242 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
 location_24 = Location.create!(available_weekdays: random_weekdays,name: "Piramid Houses", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: house, user: natalie, address: "Calle Embajadores")
 location_24.photos.attach(io: file_24, filename: 'nes.jpg', content_type: 'image/jpg')
@@ -477,7 +467,7 @@ location_24.photos.attach(io: file_241, filename: 'nes.jpeg', content_type: 'ima
 location_24.photos.attach(io: file_242, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_32 = URI.open("https://i.pinimg.com/originals/f9/6c/9b/f96c9b053c2a7270d00b871d6df29ea6.jpg")
-file_321 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
+file_321 = URI.open("https://images.adsttc.com/media/images/5c62/de78/284d/d19e/3500/00d5/newsletter/AMS-br-03-pers_B01.jpg")
 file_322 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
 location_32 = Location.create!(available_weekdays: random_weekdays,name: "Tree House", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: house, user: natalie, address: "Calle Embajadores")
 location_32.photos.attach(io: file_32, filename: 'nes.jpg', content_type: 'image/jpg')
@@ -490,36 +480,29 @@ location_12 = Location.create!(available_weekdays: random_weekdays,name: "Massiv
 location_12.photos.attach(io: file_12, filename: 'nes.jpg', content_type: 'image/jpg')
 location_12.photos.attach(io: file_121, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_19 = URI.open("https://www.coloradocollege.edu/offices/housing-and-conferences/images/Arthur.JPG")
-file_191 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_192 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_19 = Location.create!(available_weekdays: random_weekdays,name: "Rustic House", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: house, user: natalie, address: "Calle Embajadores")
-location_19.photos.attach(io: file_19, filename: 'nes.jpg', content_type: 'image/jpg')
-location_19.photos.attach(io: file_191, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_19.photos.attach(io: file_192, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_19 = URI.open("https://www.coloradocollege.edu/offices/housing-and-conferences/images/Arthur.JPG")
+# file_191 = URI.open("https://images.adsttc.com/media/images/5c62/de78/284d/d19e/3500/00d5/newsletter/AMS-br-03-pers_B01.jpg")
+# file_192 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_19 = Location.create!(available_weekdays: random_weekdays,name: "Rustic House", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: house, user: natalie, address: "Calle Embajadores")
+# location_19.photos.attach(io: file_19, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_19.photos.attach(io: file_191, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_19.photos.attach(io: file_192, filename: 'nes.jpg', content_type: 'image/jpg')
 
-file_28 = URI.open("https://www.architectsjournal.co.uk/pictures/2000x2000fit/1/8/6/3166186_thematichouselansdownewalknorthkensingtonlondon.internalwindowfromarchi.jpg")
-file_281 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
-file_282 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
-location_28 = Location.create!(available_weekdays: random_weekdays,name: "Blue Gothic House", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: house, user: natalie, address: "Calle Embajadores")
-location_28.photos.attach(io: file_28, filename: 'nes.jpg', content_type: 'image/jpg')
-location_28.photos.attach(io: file_281, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_28.photos.attach(io: file_282, filename: 'nes.jpg', content_type: 'image/jpg')
+# file_28 = URI.open("https://www.architectsjournal.co.uk/pictures/2000x2000fit/1/8/6/3166186_thematichouselansdownewalknorthkensingtonlondon.internalwindowfromarchi.jpg")
+# file_281 = URI.open("https://images.adsttc.com/media/images/5c62/de78/284d/d19e/3500/00d5/newsletter/AMS-br-03-pers_B01.jpg")
+# file_282 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
+# location_28 = Location.create!(available_weekdays: random_weekdays,name: "Blue Gothic House", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: house, user: natalie, address: "Calle Embajadores")
+# location_28.photos.attach(io: file_28, filename: 'nes.jpg', content_type: 'image/jpg')
+# location_28.photos.attach(io: file_281, filename: 'nes.jpeg', content_type: 'image/jpeg')
+# location_28.photos.attach(io: file_282, filename: 'nes.jpg', content_type: 'image/jpg')
 
-
-
-
-
-
-
-
-
+puts "Creating Bookings"
 
 booking1 = Booking.create!(user: natalie, location: location_10, dates: ["2020-03-20"])
 booking2 = Booking.create!(user: charlotte, location: location_13, dates: ["2020-03-20", "2020-04-15"])
 
 
-
+puts "Creating Reviews"
 review1 = Review.create(rating: 5, content:"Great place, just like the pictures", user: charlotte, booking: booking1)
 review2 = Review.create(rating: 3, content:"Love using this toilet", user: charlotte, booking: booking1)
 review3 = Review.create(rating: 1, content:"A-ma-zing", user: charlotte, booking: booking2)

@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
     end
     @locations = policy_scope(@locations)
   end
-
+ 
   def show
     authorize @location
     @locationextras = Locationextra.new
